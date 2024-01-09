@@ -1,12 +1,5 @@
 package maqlu.maqlulibrary.controllers;
 
-import java.math.BigDecimal;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import maqlu.maqlulibrary.entities.Book;
 import maqlu.maqlulibrary.entities.User;
 import maqlu.maqlulibrary.security.CurrentUserFinder;
@@ -15,6 +8,7 @@ import maqlu.maqlulibrary.services.UserService;
 import maqlu.maqlulibrary.utilities.DateTracker;
 import maqlu.maqlulibrary.utilities.FineCalculator;
 import maqlu.maqlulibrary.utilities.ListInStringConverter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +18,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.math.BigDecimal;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {

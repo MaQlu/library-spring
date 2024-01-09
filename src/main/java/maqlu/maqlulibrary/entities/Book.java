@@ -2,7 +2,6 @@ package maqlu.maqlulibrary.entities;
 
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity

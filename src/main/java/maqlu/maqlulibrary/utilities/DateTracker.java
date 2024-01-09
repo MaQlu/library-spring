@@ -1,19 +1,18 @@
 package maqlu.maqlulibrary.utilities;
 
+import maqlu.maqlulibrary.entities.Book;
+import maqlu.maqlulibrary.security.CurrentUserFinder;
+import maqlu.maqlulibrary.services.BookService;
+import maqlu.maqlulibrary.services.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import maqlu.maqlulibrary.services.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import maqlu.maqlulibrary.entities.Book;
-import maqlu.maqlulibrary.security.CurrentUserFinder;
-import maqlu.maqlulibrary.services.BookService;
-import maqlu.maqlulibrary.services.UserService;
 
 @Component
 public class DateTracker {

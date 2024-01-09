@@ -1,15 +1,15 @@
 package maqlu.maqlulibrary.utilities;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.LinkedHashMap;
-import java.util.List;
+import maqlu.maqlulibrary.entities.Book;
+import maqlu.maqlulibrary.entities.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import maqlu.maqlulibrary.entities.Book;
-import maqlu.maqlulibrary.entities.User;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 @Component
 public class FineCalculator {

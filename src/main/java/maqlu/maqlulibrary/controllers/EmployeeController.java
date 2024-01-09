@@ -7,9 +7,9 @@ import maqlu.maqlulibrary.security.CurrentUserFinder;
 import maqlu.maqlulibrary.services.BookService;
 import maqlu.maqlulibrary.services.NotificationService;
 import maqlu.maqlulibrary.services.UserService;
-
 import maqlu.maqlulibrary.utilities.FineCalculator;
 import maqlu.maqlulibrary.utilities.ListInStringConverter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
