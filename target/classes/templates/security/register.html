@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Register</title>
+	<!-- <link rel="stylesheet" type="text/css" th:href="../../static/CSS/style.css"> -->
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/style.css}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="wrapper">
+
+            <form th:action="@{/register/save}" th:object="${newAccount}" method="POST">
+
+                <p><b>Dane do rejestracji</b></p>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="username">Login</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="username" name="username" required="required" th:field="${newAccount.userName}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="password">Haslo</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="password" id="password" name="password" required="required" th:field="${newAccount.password}">
+                    </div>
+                </div>
+
+                <p><b>Dane kontaktowe</b></p>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="email" id="email" name="email" required="required" th:field="${newAccount.email}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="firstName">Imie</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="firstName" name="firstName" required="required" th:field="${newAccount.firstName}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lastName">Nazwisko</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="lastName" name="lastName" required="required" th:field="${newAccount.lastName}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="address">Adres</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="address" name="address" required="required" th:field="${newAccount.address}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="address">Miasto</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="city" name="city" required="required" th:field="${newAccount.city}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="phoneNumber">Numer telefonu</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="phoneNumber" name="phoneNumber" required="required" th:field="${newAccount.phoneNumber}">
+                    </div>
+                </div>
+
+                <div class="row">
+                        <input class="registerButton" type="submit" value="Zarejestruj">
+                </div>
+
+            </form>
+
+            <form th:action="@{/login}" method="GET">
+                <div class="row">
+                    <input type="submit" value="Zaloguj">
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+</html>

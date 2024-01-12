@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Dodaj ksiazke</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: employeeNavBar"></ul>
+	
+		<div class="container">
+			<h3>Dodaj nowa ksiazke</h3>
+		
+		
+			<form th:action="@{/employee/books/save}" th:object="${book}" method="POST">
+				<div class="row">
+					<div class="col-50">					
+						<label for="title">Tytul</label>
+					</div>
+				
+					<div class="col-75">
+						<input type="text" id="title" name="title" th:field="${book.title}" required="required">
+					</div>
+				</div>	
+					
+				<div class="row">
+					<div class="col-50">
+						<label for="author">Autor</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="author" name="author" th:field="${book.author}" required="required">
+					</div>
+				</div>
+					
+				<div class="row">
+					<div class="col-50">
+						<label for="releaseYear">Rok wydania</label>
+					</div>
+					<div class="col-75">
+						<input type="number" id="releaseYear" name="releaseYear" th:field="${book.releaseYear}" required="required">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-50">
+						<label for="edition">Wydanie</label>
+					</div>
+					<div class="col-75">
+						<input type="number" id="edition" name="edition" th:field="${book.edition}" required="required">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-50">
+					</div>
+					<div class="col-75">
+						<input type="submit" value="Submit">
+					</div>
+				</div>
+			</form>
+
+		</div>
+</body>
+</html>

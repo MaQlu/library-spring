@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Oplac rezerwacje</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+
+	<div class="container">
+		<h3>Oplac rezerwacje</h3>
+		<center><img src="/Images/payment-icons.png" alt="Payment icons..."></center>
+		
+		<div class="row">
+			<div class="col-25">
+			 	Calkowita kwota:
+			</div>
+			<div class="col-75">
+				<text th:text="${'zl ' + amountToPay + ',-'}"></text>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-75">
+				<form th:action="@{/user/browsebooks/savereservation}" th:method="PUT">	
+					<input type="submit" value="Zaplac i kontynuluj" style="width: 200px">
+					<input type="hidden" value="PUT" name="_method">
+					<input type="hidden" th:value="${reservedBookIdsInString}" th:name="reservedBookIdsInString">
+				</form>
+			</div>
+		</div>
+			
+	</div>
+
+</body>
+</html>

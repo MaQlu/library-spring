@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Twoje rezerwacje</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: userNavBar"></ul>
+	<div class="container">
+		
+		<h3>Twoje rezerwacje</h3>
+		
+		<p th:if="${reservedBooks.size() == 0}">Nie masz zadnych rezerwacji.</p>
+		
+		<table th:if="${reservedBooks.size() > 0}" id="tablestyle">
+			<tr>
+				<th>Tytul</th>
+				<th>Autor</th>
+				<th>Rok wydania</th>
+				<th>Wydanie</th>
+				<th>Rezerwacja od</th>
+				<th>Rezerwacja do</th>
+			</tr>
+			<tr th:each="book : ${reservedBooks}">
+				<td th:text="${book.title}"></td>
+				<td th:text="${book.author}"></td>
+				<td th:text="${book.releaseYear}"></td>
+				<td th:text="${book.edition}"></td>
+				<td th:text="${book.startReservationDate}"></td>
+				<td th:text="${book.endReservationDate}"></td>	
+			</tr>
+		</table>
+		
+	</div>
+	
+</body>
+</html>

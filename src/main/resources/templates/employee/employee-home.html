@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+<ul th:replace="page-layout :: employeeNavBar"></ul>
+	
+	<div class="container">
+		<h2 th:text="${'Witaj' + ' ' + currentUser.getFirstName + ' ' + currentUser.getLastName}"></h2>
+	</div>
+	
+	<div class="container">
+		<h3>Powiadomienia</h3>
+		
+		<div th:if="${currentUser.notifications.size() == 0}">
+			<p>Brak powiadomien.</p>
+		</div>
+				
+		<div th:if="${currentUser.notifications.size() > 0}">
+			<div class="row" th:each="notification : ${currentUser.notifications}">
+				<div class="col-25">
+					<text th:text="${notification.notificationDate}"></text>
+				</div>
+				<div class="col-75" style="width: 90%">
+					<text th:text="${notification.notificationMessage}"></text>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

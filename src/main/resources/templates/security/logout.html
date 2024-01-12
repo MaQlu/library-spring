@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyloguj</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/style.css}">
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+
+    <div class="wrapperLogout">
+        <div class="containerLogout">
+            <p>Are you sure you want to log out?</p>
+            <input class="logoutButton" type="submit" value="Wyloguj"/>
+        </div>
+    </div>
+
+
+</form>
+</body>
+</html>

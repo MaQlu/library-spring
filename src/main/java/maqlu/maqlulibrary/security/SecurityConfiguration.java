@@ -39,8 +39,9 @@ public class SecurityConfiguration {
                 .requestMatchers("/login/**").permitAll()
                 .requestMatchers("/register/**").permitAll()
                 .requestMatchers("/logout/**").permitAll()
+                //.requestMatchers("/templates/**").permitAll()
                 .requestMatchers("/CSS/**").permitAll()
-                .requestMatchers("/static/Images/**").permitAll()
+                .requestMatchers("/Images/**").permitAll()
                 .requestMatchers("/**").authenticated().and().formLogin().loginPage("/login");
                 http.csrf().ignoringRequestMatchers("/h2-console/**");
                 http.headers().frameOptions().disable();

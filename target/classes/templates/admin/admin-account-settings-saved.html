@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ustawienia konta zapisane</title>
+    <link rel="stylesheet" type="text/css" th:href="@{CSS/style-restofpage.css}">
+</head>
+<body>
+
+<div class="container">
+    <h3>Ustawienia konta zapisane</h3>
+
+    <div class="row">
+        <div class="col-50">
+            <form th:action="@{/admin/manageaccounts}" method="GET">
+                <input type="submit" value="Powrot">
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

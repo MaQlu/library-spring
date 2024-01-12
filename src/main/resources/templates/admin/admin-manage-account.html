@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarzadzanie kontem</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h3>Zarzadzanie kontem</h3>
+
+    <div class="row">
+        <div class="col-50">
+            <text>Login:</text>
+        </div>
+        <div class="col-75">
+            <text th:text="${user.userName}"></text>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-50">
+            <text>Imie:</text>
+        </div>
+        <div class="col-75">
+            <text th:text="${user.firstName}"></text>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-50">
+            <text>Nazwisko:</text>
+        </div>
+        <div class="col-75">
+            <text th:text="${user.lastName}"></text>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-50">
+            <text>Email:</text>
+        </div>
+        <div class="col-75">
+            <text th:text="${user.email}"></text>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-50">
+            <text>Numer telefonu:</text>
+        </div>
+        <div class="col-75">
+            <text th:text="${user.phoneNumber}"></text>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-50">
+            <text>Adres:</text>
+        </div>
+        <div class="col-75">
+            <text th:text="${user.address}"></text>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-50">
+            <text>Miasto:</text>
+        </div>
+        <div class="col-75">
+            <text th:text="${user.city}"></text>
+        </div>
+    </div>
+
+    <form th:action="@{/admin/confirmaccountsettings}" th:method="PUT">
+        <div class="row">
+            <div class="col-50">
+                <text>Status konta:</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="accStatus" name="accStatus" value="true" th:checked="${user.enabled == true}">
+                <text for="enabled">Konto aktywne</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="accStatus" name="accStatus" value="false" th:checked="${user.enabled == false}">
+                <text for="accStatus">Konto nieaktywne</text>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <text>Role:</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="role" name="role" value="ROLE_USER" th:checked="${user.role.equals('ROLE_USER')}">
+                <text for="role">Uzytkownik</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="role" name="role" value="ROLE_EMPLOYEE" th:checked="${user.role.equals('ROLE_EMPLOYEE')}">
+                <text for="role">Pracownik</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="role" name="role" value="ROLE_ADMIN" th:checked="${user.role.equals('ROLE_ADMIN')}">
+                <text for="role">Administrator</text>
+            </div>
+
+        </div>
+
+
+        <br/>
+
+        <div class="row">
+            <div class="col-50">
+                <input type="submit" value="Zapisz">
+                <input type="hidden" th:value="PUT" th:name="_method">
+                <input type="hidden" th:value="${user.userId}" name="userId">
+                <input type="hidden" th:value="${accStatus}">
+                <input type="hidden" th:value="${role}">
+    </form>
+</div>
+
+<div class="col-50">
+    <form th:action="@{/admin/manageaccounts}" th:method="GET">
+        <input type="submit" value="Anuluj" style="background-color: red">
+    </form>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

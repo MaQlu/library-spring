@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Potwierdzenie zdania ksiazki</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+
+	<div class="container">
+		
+		<h3>Potwierdzenie zdania ksiazki</h3>
+		
+		<div class="row">
+			<div class="col-25">
+				<text>Imie i Nazwisko:</text>
+			</div>
+			<div class="col-50">
+				<text th:text="${user.firstName + ' ' + user.lastName}"></text>
+			</div>
+		</div>
+					
+		<div class="row">
+			<div class="col-25">
+				<text>Adres:</text>
+			</div>
+			<div class="col-50">
+				<text th:text="${user.address}"></text>
+			</div>					
+		</div>		
+					
+		<div class="row">
+			<div class="col-25">
+				<text>Miasto:</text>
+			</div>
+			<div class="col-50">
+				<text th:text="${user.city}"></text>
+			</div>	
+		</div>
+		<br/>
+		
+		<table id="tablestyle">
+			<tr>
+				<th>Tytul</th>
+				<th>Autor</th>
+				<th>Rok wydania</th>
+				<th>Wydanie</th>
+			</tr>
+			<tr th:each="book : ${selectedBooks}">
+				<td th:text="${book.title}"></td>
+				<td th:text="${book.author}"></td>
+				<td th:text="${book.releaseYear}"></td>
+				<td th:text="${book.edition}"></td>
+			</tr>
+		</table>
+		
+		<p th:if="${fineToPay > 0}">Total fine to be paid: <b><text th:text="${zl + fineToPay + '.'}"></text></b></p>
+		
+		<div class="row">
+			<div class="col-75">
+				<form th:action="@{/employee/savereturnedbooks}" th:method="PUT">
+					<input style="width: 225px" th:if="${fineToPay > 0}" type="submit" value="Potwierdz platnosc i zwroc">
+					<input style="width: 225px" th:if="${fineToPay == 0}" type="submit" value="Potwierdz i zwroc">
+					<input type="hidden" th:value="${user.userId}" name="userId">
+					<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
+					<input type="hidden" th:value="PUT" name="_method">
+				</form>
+			</div>
+			<div class="col-75">	
+				<form th:action="@{/employee/returnedbooks}" method="GET">
+					<input style="width: 225px; background-color: red" type="submit" value="Cancel">
+					<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
+				</form>
+			</div>	
+		</div>
+	</div>	
+
+</body>
+</html>

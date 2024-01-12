@@ -1,15 +1,19 @@
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
 * {
+
     box-sizing: border-box;
     font-family: Raleway, sans-serif;
 }
 
 body {
-    background: url("../Images/login.jpg");
+    background: url(../Images/login.jpg) no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
 }
+
+/* security css section */
 
 .wrapper {
     border-radius: 5px;
@@ -19,6 +23,7 @@ body {
 .container {
 	display: flex;
 	align-items: center;
+    text-align: center;
 	justify-content: center;
     min-height: 100vh;
 }
@@ -68,3 +73,4 @@ input[type=submit] {
     height: auto;
     width: 300px;
 }
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Zamowienie potwierdzone</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+	<div class="container">
+		<h3>Zamowienie potwierdzone</h3>
+		<br/>
+		<form th:action="@{/employee/orders}" method="GET">
+			<div class="row">
+				<input type="submit" value="Powrot">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

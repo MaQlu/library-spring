@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>FAQ</title>
+<link rel="styleSheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: userNavBar"></ul>
+	
+	<div class="container">
+		<h3>FAQ</h3>
+
+		<p>Nie możesz znaleźć tutaj swojej odpowiedzi? Skontaktuj się z nami poprzez
+			wysyłając wiadomość e-mail na adres obsługa klienta@library.com.</p>
+
+		<h4>Na jak długo mogę wypożyczyć książkę?</h4>
+		<p>Książki można wypożyczać na 21 dni. Okres ten może zostać przedłużony każdorazowo o jeden tydzień, maksymalnie o trzy tygodnie. Przedłużenie jest bezpłatne
+			i można to zrobić tylko wtedy, gdy nikt inny nie dokonał rezerwacji na tę konkretną książkę. Stan Twoich książek
+			można sprawdzić na swoim osobistym koncie bibliotecznym na naszej stronie internetowej.</p>
+
+		<h4>Jak mogę zarezerwować książkę?</h4>
+		<p>Wyszukaj książkę za pośrednictwem osobistego konta bibliotecznego na naszej stronie internetowej i kliknij przycisk „Zarezerwuj książkę”. Rezerwacja jest ważna przez 7 dni i kosztuje 1,- zl za książkę.
+			Jeżeli książka nie zostanie odebrana w ciągu 7 dni, rezerwacja zostanie automatycznie anulowana.</p>
+
+		<h4>Co się stanie, jeśli nie uda mi się zwrócić książki w terminie?</h4>
+		Za każdy dzień pobierana jest kara w wysokości 0,20 USD za książkę. Trzymając w posiadaniu książkę, która powinna była zostać zwrócona, zastrzeżenia
+		nie można składać i odbierać nowych zamówień.
+
+		<h4>Co się stanie, jeśli zgubię książkę?</h4>
+		<p>Skontaktuj się z naszym działem obsługi klienta tak szybko, jak to możliwe. W zależności od rodzaju książki, biblioteka pobiera niewielką opłatę za książkę
+			na temat jego wartości.</p>
+	</div>
+	
+</body>
+</html>
