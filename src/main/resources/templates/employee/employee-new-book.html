@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
 </head>
 <body>
-	<ul th:replace="page-layout :: employeeNavBar"></ul>
+	<ul th:replace="~{page-layout :: employeeNavBar}"></ul>
 	
 		<div class="container">
 			<h3>Dodaj nowa ksiazke</h3>
@@ -55,7 +55,7 @@
 					<div class="col-50">
 					</div>
 					<div class="col-75">
-						<input type="submit" value="Submit">
+						<input type="submit" value="Potwierdz">
 					</div>
 				</div>
 			</form>

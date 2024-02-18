@@ -16,7 +16,7 @@
             <text>Login:</text>
         </div>
         <div class="col-75">
-            <text th:text="${user.userName}">
+            &emsp;<text th:text="${user.userName}">
         </div>
     </div>
 
@@ -25,7 +25,7 @@
             <text>Imie:</text>
         </div>
         <div class="col-75">
-            <text th:text="${user.firstName}">
+            &emsp;<text th:text="${user.firstName}">
         </div>
     </div>
 
@@ -34,7 +34,7 @@
             <text>Nazwisko:</text>
         </div>
         <div class="col-75">
-            <text th:text="${user.lastName}">
+            &emsp;<text th:text="${user.lastName}">
         </div>
     </div>
     <br/>
@@ -43,7 +43,7 @@
             <text>Konto aktywne:</text>
         </div>
         <div class="col-75">
-            <text th:text="${accStatus}">
+            &emsp;<text th:text="${accStatus}">
         </div>
     </div>
 
@@ -52,14 +52,14 @@
             <text>Ranga:</text>
         </div>
         <div class="col-75">
-            <text th:text="${role}">
+            &emsp;<text th:text="${role}">
         </div>
     </div>
 
     <div class="row">
         <div class="col-50">
             <form th:action="@{/admin/saveaccountsettings}" th:method="PUT">
-                <input type="submit" value="Confirm">
+                <input type="submit" value="Potwierdz">
                 <input type="hidden" th:value="${user.userId}" name="userId">
                 <input type="hidden" th:value="${accStatus}" name="accStatus">
                 <input type="hidden" th:value="${role}" name="role">

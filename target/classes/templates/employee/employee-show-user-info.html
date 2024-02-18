@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
 </head>
 <body>
-	<ul th:replace="page-layout :: employeeNavBar"></ul>	
+	<ul th:replace="~{page-layout :: employeeNavBar}"></ul>
 		<div class="container">
 			<h3>Informacje o uzytkowniku</h3>
 				
@@ -15,7 +15,7 @@
 							Login:
 						</div>	
 						<div class="col-75">
-							<text th:text="${user.userName}">
+							&emsp;<text th:text="${user.userName}">
 						</div>
 				</div>	
 				
@@ -24,7 +24,7 @@
 							Imie:
 						</div>	
 						<div class="col-75">
-							<text th:text="${user.firstName}"/>
+							&emsp;<text th:text="${user.firstName}"/>
 						</div>
 				</div>	
 							
@@ -34,7 +34,7 @@
 							Nazwisko:
 						</div>	
 						<div class="col-75">
-							<text th:text="${user.lastName}">
+							&emsp;<text th:text="${user.lastName}">
 						</div>
 				</div>	
 				
@@ -43,7 +43,7 @@
 							Email:
 						</div>	
 						<div class="col-75">
-							<text th:text="${user.email}">
+							&emsp;<text th:text="${user.email}">
 						</div>
 				</div>	
 				
@@ -52,7 +52,7 @@
 						Adres:
 					</div>	
 					<div class="col-75">
-						<text th:text="${user.address}">
+						&emsp;<text th:text="${user.address}">
 					</div>
 				</div>	
 				
@@ -61,7 +61,7 @@
 						Miasto:
 					</div>
 					<div class="col-75">
-						<text th:text="${user.city}">
+						&emsp;<text th:text="${user.city}">
 					</div>
 				</div>	
 				
@@ -70,7 +70,7 @@
 						Numer telefonu:
 					</div>
 					<div class="col-75">
-						<text th:text="${user.phoneNumber}">
+						&emsp;<text th:text="${user.phoneNumber}">
 					</div>
 				</div>	
 				
@@ -79,11 +79,11 @@
 						Calkowita kara:
 					</div>
 					<div class="col-75" th:if="${fine > 0}">
-						<text style="color:red" th:text="${'zl ' + fine}">
+						&emsp;<text style="color:red" th:text="${fine + ' zl'}">
 					</div>
 					
 					<div class="col-75" th:if="${fine == 0}">
-						<text th:text="${'zl ' + fine}">
+						&emsp;<text th:text="${fine + ' zl'}">
 					</div>
 				</div>	
 		
@@ -107,8 +107,8 @@
 				<td th:text="${book.key.releaseYear}"></td>
 				<td th:text="${book.key.edition}"></td>
 				<td th:text="${book.key.returnDate}"></td>
-				<td th:if="${book.value > 0}" style="color:red" th:text="${'zl ' + book.value}"></td>
-				<td th:if="${book.value == 0}" th:text="${'zl ' + book.value}"></td>
+				<td th:if="${book.value > 0}" style="color:red" th:text="${book.value + ' zl'}"></td>
+				<td th:if="${book.value == 0}" th:text="${book.value + ' zl'}"></td>
 			</tr>
 		</table>
 		
@@ -124,8 +124,8 @@
 				<th>Autor</th>
 				<th>Rok wydania</th>
 				<th>Wydanie</th>
-				<th>Reserved from</th>
-				<th>Reserved until</th>	
+				<th>Rezerwacja od</th>
+				<th>Rezerwacja do</th>
 			</tr>
 			<tr th:each="book : ${user.reservedBooks}">
 				<td th:text="${book.title}"></td>

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<ul th:replace="page-layout :: adminNavBar"></ul>
+<ul th:replace="~{page-layout :: adminNavBar}"></ul>
 
 <div class="container">
     <h2 th:text="${'Witaj' + ' ' + currentUser.firstName + ' ' + currentUser.lastName}"></h2>

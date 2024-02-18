@@ -16,7 +16,7 @@
 				Tytul:
 			</div>
 			<div class="col-75">
-				<text th:text="${book.title}"></text>
+				&emsp;<text th:text="${book.title}"></text>
 			</div>
 		</div>
 		
@@ -25,16 +25,16 @@
 				Autor:
 			</div>
 			<div class="col-75">
-				<text th:text="${book.author}"></text>
+				&emsp;<text th:text="${book.author}"></text>
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="col-50">
-				Release year:
+				Rok wydania:
 			</div>
 			<div class="col-75">
-				<text th:text="${book.releaseYear}"></text>
+				&emsp;<text th:text="${book.releaseYear}"></text>
 			</div>
 		</div>
 		
@@ -43,7 +43,7 @@
 				Wydanie
 			</div>
 			<div class="col-75">
-				<text th:text="${book.edition}"></text>
+				&emsp;<text th:text="${book.edition}"></text>
 			</div>
 		</div>
 		
@@ -52,7 +52,7 @@
 		<div class="row">
 			<div class="col-50">
 				<form th:action="@{/employee/updatebookreservation}" th:method="PUT">
-					<input type="submit" value="Yes">
+					<input type="submit" value="Tak">
 					<input type="hidden" th:name="_method" th:value="PUT">
 					<input type="hidden" th:name="bookId" th:value="${book.bookId}">
 					<input type="hidden" th:name="userId" th:value="${user.userId}">

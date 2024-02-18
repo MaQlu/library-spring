@@ -306,7 +306,7 @@ public class EmployeeController {
                                         @RequestParam Long userId) {
 
         Book book = bookService.findById(bookId);
-        Notification notification = new Notification(LocalDate.now(), book.getEndReservationDate(), "Your reservation is ready for pick-up until " +
+        Notification notification = new Notification(LocalDate.now(), book.getEndReservationDate(), "Ksiazke mozesz odebrac do: " +
                 book.getEndReservationDate() + ". " + book.getTitle() + " by " + book.getAuthor() + ".");
 
         notification.setValidUntilDate(book.getEndReservationDate());

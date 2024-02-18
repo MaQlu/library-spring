@@ -16,7 +16,7 @@
 				<text>Imie i Nazwisko:</text>
 			</div>
 			<div class="col-50">
-				<text th:text="${user.firstName + ' ' + user.lastName}"></text>
+				&emsp;<text th:text="${user.firstName + ' ' + user.lastName}"></text>
 			</div>
 		</div>
 					
@@ -25,7 +25,7 @@
 				<text>Adres:</text>
 			</div>
 			<div class="col-50">
-				<text th:text="${user.address}"></text>
+				&emsp;<text th:text="${user.address}"></text>
 			</div>					
 		</div>		
 					
@@ -34,7 +34,7 @@
 				<text>Miasto:</text>
 			</div>
 			<div class="col-50">
-				<text th:text="${user.city}"></text>
+				&emsp;<text th:text="${user.city}"></text>
 			</div>	
 		</div>
 		<br/>
@@ -54,7 +54,7 @@
 			</tr>
 		</table>
 		
-		<p th:if="${fineToPay > 0}">Total fine to be paid: <b><text th:text="${zl + fineToPay + '.'}"></text></b></p>
+		<p th:if="${fineToPay > 0}">Calosc do zaplaty: <b><text th:text="${'zl ' + fineToPay + '.'}"></text></b></p>
 		
 		<div class="row">
 			<div class="col-75">
@@ -68,7 +68,7 @@
 			</div>
 			<div class="col-75">	
 				<form th:action="@{/employee/returnedbooks}" method="GET">
-					<input style="width: 225px; background-color: red" type="submit" value="Cancel">
+					<input style="width: 225px; background-color: red" type="submit" value="Anuluj">
 					<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
 				</form>
 			</div>	

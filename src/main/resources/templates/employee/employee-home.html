@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
 </head>
 <body>
-<ul th:replace="page-layout :: employeeNavBar"></ul>
+<ul th:replace="~{page-layout :: employeeNavBar}"></ul>
 	
 	<div class="container">
 		<h2 th:text="${'Witaj' + ' ' + currentUser.getFirstName + ' ' + currentUser.getLastName}"></h2>

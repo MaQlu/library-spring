@@ -22,7 +22,7 @@
 					<th>Autor</th>
 					<th>Rok wydania</th>
 					<th>Wydanie</th>
-					<th>Reserved by</th>
+					<th>Zarezerwowana przez:</th>
 					<th>Rezerwacja do</th>
 					<th style="width: 260px">Gotowa do odbioru</th>
 				</tr>
@@ -35,7 +35,7 @@
 					<td th:text="${book.endReservationDate}"></td>
 					<td>
 						<form th:action="@{/employee/setreadyforpickup}" th:method="PUT">
-							<input style="width: 250px" class="table" type="submit" value="Set book status to ready for pick-up">
+							<input style="width: 250px" class="table" type="submit" value="Gotowa do odbioru">
 							<input type="hidden" th:name="_method" th:value="PUT">
 							<input type="hidden" name="bookId" th:value="${book.bookId}">
 							<input type="hidden" name="userId" th:value="${book.reservedByUser.userId}">
@@ -57,7 +57,7 @@
 					<th>Autor</th>
 					<th>Rok wydania</th>
 					<th>Wydanie</th>
-					<th>Reserved by</th>
+					<th>Zarezerwowana przez</th>
 					<th>Rezerwacja do</th>
 				</tr>
 				<tr th:each="book : ${processedReservations}">

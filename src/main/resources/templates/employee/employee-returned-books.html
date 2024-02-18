@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Zdane ksiazki</title>
+<title>Zdaj ksiazke</title>
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
 </head>
 <body>
 
-	<ul th:replace="page-layout :: employeeNavBar"></ul>
+	<ul th:replace="~{page-layout :: employeeNavBar}"></ul>
 	
 		<div class="container">
 			
 				<div th:if="${userId == null}">		
-				<h3>Zdane ksiazki</h3>
+				<h3>Zdaj ksiazke</h3>
 				
 					<div class="row">
 						<form th:action="@{/employee/returnedbooks}" method="GET">
@@ -70,7 +70,7 @@
 							<text>Imie i nazwisko:</text>
 						</div>
 						<div class="col-50">
-							<text th:text="${user.firstName + ' ' + user.lastName}"></text>
+							&emsp;<text th:text="${user.firstName + ' ' + user.lastName}"></text>
 						</div>
 					</div>
 					<div class="row">
@@ -78,7 +78,7 @@
 							<text>Adres:</text>
 						</div>
 						<div class="col-50">
-							<text th:text="${user.address}"></text>
+							&emsp;<text th:text="${user.address}"></text>
 						</div>					
 					</div>		
 					
@@ -87,7 +87,7 @@
 							<text>Miasto:</text>
 						</div>
 						<div class="col-50">
-							<text th:text="${user.city}"></text>
+							&emsp;<text th:text="${user.city}"></text>
 						</div>	
 					</div>
 				</div>	
@@ -106,7 +106,7 @@
 					<th>Wydanie</th>
 					<th>Data zdania</th>
 					<th>Kara</th>
-					<th style="width: 125px">Select Book</th>
+					<th style="width: 125px">Wybierz ksiazke</th>
 				</tr>
 				<tr th:each="book : ${booksInUseByUser}">
 					<td th:text="${book.key.title}"></td>
@@ -115,12 +115,12 @@
 					<td th:text="${book.key.edition}"></td>
 					<td th:text="${book.key.returnDate}"></td>
 					<td>
-						<text th:if="${book.value > 0}" th:text="${zl + book.value}" style="color: red"></text>
-						<text th:if="${book.value == 0}"th:text="${zl + book.value}"></text>
+						<text th:if="${book.value > 0}" th:text="${book.value + ' zl'}" style="color: red"></text>
+						<text th:if="${book.value == 0}"th:text="${book.value + ' zl'}"></text>
 					</td>
 					<td>
 						<form th:action="@{/employee/returnedbooks}" method="GET">
-							<input type="submit" value="Select book" class="table">
+							<input type="submit" value="Wybierz ksiazke" class="table">
 							<input type="hidden" th:value="${book.key.bookId}" name="selectedBookId">
 							<input type="hidden" th:value="${user.userId}" name="userId">
 							<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
@@ -149,10 +149,10 @@
 					<td th:text="${selectedBook.key.releaseYear}"></td>
 					<td th:text="${selectedBook.key.edition}"></td>
 					<td th:text="${selectedBook.key.returnDate}"></td>
-					<td th:text="${zl + selectedBook.value}">
+					<td th:text="${selectedBook.value + ' zl'}">
 					<td>
 						<form th:action="@{/employee/returnedbooks}" method="GET">
-							<input type="submit" value="Remove book" style="background-color: red" class="table">
+							<input type="submit" value="Usun ksiazke" style="background-color: red" class="table">
 							<input type="hidden" th:value="${user.userId}" name="userId">
 							<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
 							<input type="hidden" th:value="${selectedBook.key.bookId}" name="removeBookId">
@@ -161,11 +161,11 @@
 				</tr>
 			</table>
 			
-			<p>Total fine to pay: <text th:text="${zl + fineToPay + '.'}"></p>
+			<p>Do zaplaty: <text th:text="${fineToPay + ' zl.'}"></p>
 			
 			<div class="row">
 				<form th:action="@{/employee/confirmreturnedbooks}" method="GET">
-					<input type="submit" value="Return books">
+					<input type="submit" value="Zwroc ksiazki">
 					<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
 					<input type="hidden" th:value="${user.userId}" name="userId">
 					<input type="hidden" th:value="${fineToPay}" name="fineToPay">

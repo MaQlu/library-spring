@@ -15,7 +15,7 @@
 				<text>Imie i Nazwisko</text>
 			</div>			
 			<div class="col-75">
-				<text th:text="${user.firstName + ' ' + user.lastName}"></text>
+				&emsp;<text th:text="${user.firstName + ' ' + user.lastName}"></text>
 			</div>
 		</div>
 		
@@ -24,7 +24,7 @@
 				<text>Adres</text>
 			</div>
 			<div class="col-75">
-				<text th:text="${user.address}"></text>
+				&emsp;<text th:text="${user.address}"></text>
 			</div>
 		</div>
 		
@@ -33,7 +33,7 @@
 				<text>Miasto</text>
 			</div>
 			<div class="col-75">
-				<text th:text="${user.city}"></text>
+				&emsp;<text th:text="${user.city}"></text>
 			</div>
 		</div>
 		
@@ -58,7 +58,7 @@
 		<div class="row">
 			<div class="col-50">
 				<form th:action="@{/employee/saveorder}" th:method="PUT">
-					<input type="submit" value="Confirm">
+					<input type="submit" value="Potwierdz">
 					<input type="hidden" th:name="_method" th:value="PUT">
 					<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
 					<input type="hidden" th:value="${user.userId}" name="userId">
@@ -67,7 +67,7 @@
 		
 			<div class="col-50">
 				<form th:action="@{/employee/orders}" method="GET">
-					<input type="submit" value="Go back" style="background-color: red">
+					<input type="submit" value="Powrot" style="background-color: red">
 					<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
 					<input type="hidden" th:value="${user.userId}" name="userId">
 				</form>
