@@ -18,7 +18,7 @@ public class MaqluLibraryApplication implements WebMvcConfigurer {
   @Override
   public void addCorsMappings(CorsRegistry registry) {
     registry.addMapping("/**")
-      .allowedOrigins("http://localhost:3000", "http://192.168.100.16:3000")
+      .allowedOrigins("http://localhost:3000", "http://192.168.100.16:3000", "http://87.205.117.151:3000")
       .allowedMethods("GET", "POST", "PUT", "DELETE")
       .allowedHeaders("Authorization")
       .exposedHeaders("Authorization")

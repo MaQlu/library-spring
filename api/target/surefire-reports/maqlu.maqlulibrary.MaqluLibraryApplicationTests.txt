@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: maqlu.maqlulibrary.MaqluLibraryApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.528 s -- in maqlu.maqlulibrary.MaqluLibraryApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.482 s -- in maqlu.maqlulibrary.MaqluLibraryApplicationTests
