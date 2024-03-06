@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ksiazka dodana</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+	
+	<div class="container">
+		<h3>Ksiazka dodana!</h3>
+		<br/>
+		<div class="row">
+			<div class="col-50"> 
+				<form th:action="@{/employee/books}">
+					<input type="submit" value="Powrot">
+				</form>
+			</div>
+			<div class="col-50">
+				<form th:action="@{/employee/books/newbook}">
+					<input type="submit" value="Dodaj kolejna ksiazke">
+				</form>
+			</div>
+		</div>		
+	</div>
+
+</body>
+</html>

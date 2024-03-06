@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ksiazka zwrocona</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+	
+	<div class="container">
+		<h3>Ksiazka zwrocona</h3>
+		
+		<div class="row">
+			<form th:action="@{/employee/returnedbooks}" method="GET">
+				<input type="submit" value="Powrot">
+			</form>
+		</div>
+	</div>
+	
+	
+</body>
+</html>

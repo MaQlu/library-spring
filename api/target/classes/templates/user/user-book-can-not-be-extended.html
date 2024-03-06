@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Termin zdania nie moze zostac przedluzony</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style-restofpage.css}">
+</head>
+<body>
+	
+	<div class="container">
+		<h3>Termin zdania nie moze zostac przedluzony</h3>
+		
+		<p>Termin zwrotu ksiazki, ktorz starasz się przedluzyc, nie moze zostac przedluzony. Mozliwe przyczyny to:
+		<br/><br/>
+			- Osiagnieto maksymalny okres uzytkowania.<br/>
+			- Termin zwrotu jest już przedluzony o 3 tygodnie.<br/>
+			- Ktos inny zarezerwowal ksiazke.<br/><br/>
+			Prosimy pamietac o terminowym zwroceniu tej ksiazki do biblioteki.
+		</p>
+		
+	
+		<div class="row">
+			<form th:action="@{/user/yourbooks}" method="GET">
+				<input style="width: 200px" type="submit" value="Powrot">
+			</form>
+		</div>
+		
+	</div>
+	
+</body>
+</html>
