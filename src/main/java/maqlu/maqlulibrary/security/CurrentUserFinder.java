@@ -13,17 +13,20 @@ public class CurrentUserFinder {
 
     @Autowired
     UserService usService;
+//    public long getCurrentUserId(){
+//        UserDetails detail = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String username = detail.getUsername();
+//        long userId = -1;
+//        for (User user : usService.findAll()){
+//            if (user.getUserName().equals(username)){
+//                userId = user.getUserId();
+//                break;
+//            }
+//        }
+//        return userId;
+//    }
     public long getCurrentUserId(){
-        UserDetails detail = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username = detail.getUsername();
-        long userId = -1;
-        for (User user : usService.findAll()){
-            if (user.getUserName().equals(username)){
-                userId = user.getUserId();
-                break;
-            }
-        }
-        return userId;
+        return 2;
     }
 
     public User getCurrentUser(){

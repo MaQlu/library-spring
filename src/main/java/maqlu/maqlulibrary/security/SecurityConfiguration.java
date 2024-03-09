@@ -32,18 +32,18 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests()
-                .requestMatchers("/user/**").hasRole("USER")
-                .requestMatchers("/employee/**").hasRole("EMPLOYEE")
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/h2-console/**").hasRole("ADMIN") //admin access db
-                .requestMatchers("/login/**").permitAll()
-                .requestMatchers("/register/**").permitAll()
-                .requestMatchers("/logout/**").permitAll()
-                //.requestMatchers("/templates/**").permitAll()
-                .requestMatchers("/CSS/**").permitAll()
-                .requestMatchers("/Images/**").permitAll()
-                .requestMatchers("/**").authenticated().and().formLogin().loginPage("/login");
-                http.csrf().ignoringRequestMatchers("/h2-console/**");
+                .requestMatchers("/**").permitAll();
+//                .requestMatchers("/user/**").hasRole("USER")
+//                .requestMatchers("/employee/**").hasRole("EMPLOYEE")
+//                .requestMatchers("/admin/**").hasRole("ADMIN")
+//                .requestMatchers("/h2-console/**").hasRole("ADMIN") //admin access db
+//                .requestMatchers("/login/**").permitAll()
+//                .requestMatchers("/register/**").permitAll()
+//                .requestMatchers("/logout/**").permitAll()
+//                //.requestMatchers("/templates/**").permitAll()
+//                .requestMatchers("/CSS/**").permitAll()
+//                .requestMatchers("/Images/**").permitAll()
+//                .requestMatchers("/**").authenticated().and().formLogin().loginPage("/login");
                 http.headers().frameOptions().disable();
         return http.build();
     }

@@ -10,16 +10,13 @@ import maqlu.maqlulibrary.utilities.FineCalculator;
 import maqlu.maqlulibrary.utilities.ListInStringConverter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @RequestMapping("/user")
@@ -56,12 +53,17 @@ public class UserController {
     }
 
     @GetMapping(value="/yourbooks")
-    public String yourBooks(Model model) {
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> yourBooks() {
         User currentUser = currentUserFinder.getCurrentUser();
         List<Book> books = currentUser.getBooks();
-        LinkedHashMap<Book, BigDecimal> booksWithFines = fineCalculator.getBooksWithFines(books);
-        model.addAttribute("books", booksWithFines);
-        return "user/user-your-books.html";
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("currentUser", currentUser);
+        response.put("booksWithFines", fineCalculator.getBooksWithFines(books));
+        response.put("booksWithoutFine",currentUser.getBooks());
+
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping(value="/yourbooks/extend")
@@ -89,32 +91,6 @@ public class UserController {
         }
     }
 
-    @GetMapping(value="/yourbooks/payfine/{bookId}")
-    public String payFine(Model model, @PathVariable (value="bookId") Long bookId) {
-
-        Book book = bookService.findById(bookId);
-        BigDecimal fine = fineCalculator.getFineOfBook(book);
-        int weeksToExtend = dateTracker.getWeeksToExtendReturnDate(book);
-
-        model.addAttribute("weeksToExtend", weeksToExtend);
-        model.addAttribute("fine", fine);
-        model.addAttribute("book", book);
-
-        return "user/user-pay-fine.html";
-    }
-
-    @PostMapping(value="/yourbooks/dopayment")
-    public String doPayment(@RequestParam int weeksToExtend,
-                            @RequestParam BigDecimal fineAmount,
-                            @RequestParam long bookId,
-                            Model model) {
-        Book currentBook = bookService.findById(bookId);
-        model.addAttribute("fineAmount", fineAmount);
-        model.addAttribute("weeksToExtend", weeksToExtend);
-        model.addAttribute("book", currentBook);
-        return "user/user-do-payment.html";
-    }
-
     @GetMapping(value="/yourbooks/bookextended")
     public String bookExtended() {
         return "user/user-book-extended.html";
@@ -126,33 +102,45 @@ public class UserController {
     }
 
     @GetMapping(value="/browsebooks")
-    public String browseBooks(@RequestParam (required=false) String title,
-                              @RequestParam (required=false) String author,
-                              @RequestParam (required=false) String showAllBooks,
-                              @RequestParam (required=false) Long  reservedBookId,
-                              @RequestParam (required=false) Long removeBookId,
-                              @RequestParam (required=false) String reservedBookIdsInString,
-                              Model model) {
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> browseBooksJson(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String author,
+            @RequestParam(required = false) String showAllBooks,
+            @RequestParam(required = false) Long reservedBookId,
+            @RequestParam(required = false) Long removeBookId,
+            @RequestParam(required = false) String reservedBookIdsInString) {
 
-        Set<Long> reservedBookIds = new LinkedHashSet<Long>();
-        if (reservedBookIdsInString != null) reservedBookIds = listConverter.convertListInStringToSetInLong(reservedBookIdsInString);
-        if (removeBookId != null) reservedBookIds.remove(removeBookId);
-        if(reservedBookId != null) reservedBookIds.add(reservedBookId);
+        Set<Long> reservedBookIds = new LinkedHashSet<>();
+        if (reservedBookIdsInString != null) {
+            reservedBookIds = listConverter.convertListInStringToSetInLong(reservedBookIdsInString);
+        }
+        if (removeBookId != null) {
+            reservedBookIds.remove(removeBookId);
+        }
+        if (reservedBookId != null) {
+            reservedBookIds.add(reservedBookId);
+        }
 
         Map<Book, String> listedBookReservations = dateTracker.listedBookReservations(reservedBookIds);
 
         List<Book> books;
-        if (showAllBooks == null) books = bookService.searchBooks(title, author);
-        else books = bookService.findAll();
+        if (showAllBooks == null) {
+            books = bookService.searchBooks(title, author);
+        } else {
+            books = bookService.findAll();
+        }
 
-        model.addAttribute("userHasFine", fineCalculator.hasFineOrNot(currentUserFinder.getCurrentUser()));
-        model.addAttribute("listedBookReservations", listedBookReservations);
-        model.addAttribute("reservedBookIds", reservedBookIds);
-        model.addAttribute("title", title);
-        model.addAttribute("author", author);
-        model.addAttribute("showAllBooks", showAllBooks);
-        model.addAttribute("books", books);
-        return "user/user-browse-books.html";
+        Map<String, Object> response = new HashMap<>();
+        response.put("userHasFine", fineCalculator.hasFineOrNot(currentUserFinder.getCurrentUser()));
+        response.put("listedBookReservations", listedBookReservations);
+        response.put("reservedBookIds", reservedBookIds);
+        response.put("title", title);
+        response.put("author", author);
+        response.put("showAllBooks", showAllBooks);
+        response.put("books", books);
+
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping(value="/FAQ")
@@ -179,9 +167,14 @@ public class UserController {
     }
 
     @GetMapping(value="/yourreservations")
-    public String yourReservations(Model model) {
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> yourReservations() {
         User currentUser = currentUserFinder.getCurrentUser();
-        model.addAttribute("reservedBooks", currentUser.getReservedBooks());
-        return "user/user-your-reservations.html";
+        List<Book> reservedBooks = currentUser.getReservedBooks();
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("reservedBooks", reservedBooks);
+
+        return ResponseEntity.ok(response);
     }
 }

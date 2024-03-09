@@ -100,15 +100,19 @@ public class FillDB {
                 bookService.save(book25);
 
                 book10.setTheUser(user3);
-                book10.setReturnDate(LocalDate.of(2023, 5, 23));
+                book10.setReturnDate(LocalDate.of(2024, 3, 9));
 
                 book1.setTheUser(user3);
-                book1.setReturnDate(LocalDate.of(2024, 2, 20));
+                book1.setReturnDate(LocalDate.of(2024, 3, 9));
 
-                user3.setBooks(Arrays.asList(book10, book1));
+                book5.setTheUser(user3);
+                book5.setReturnDate(LocalDate.of(2024,3,9));
+
+                user3.setBooks(Arrays.asList(book10, book1,book5));
 
                 bookService.save(book1);
                 bookService.save(book10);
+                bookService.save(book5);
                 usService.save(user3);
 
                 midAppRef.midnightApplicationRefresher();

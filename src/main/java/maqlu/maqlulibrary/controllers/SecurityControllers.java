@@ -41,6 +41,7 @@ public class SecurityControllers {
         return "redirect:/register/accountcreated";
     }
 
+    //toDelete
     @GetMapping(value="/register/accountcreated")
     public String accountCreated() {
         return "security/account-created.html";

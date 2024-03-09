@@ -1,5 +1,6 @@
 package maqlu.maqlulibrary.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class User {
     private String userName;
     private String password;
     private boolean enabled = true;
+
     private String role = "ROLE_USER";
     private String email;
     private String firstName;
@@ -26,7 +28,7 @@ public class User {
 
     @OneToMany(mappedBy="reservedByUser")
     private List<Book> reservedBooks;
-
+    @JsonIgnore
     @OneToMany(mappedBy="theUser")
     private List<Book> books;
 

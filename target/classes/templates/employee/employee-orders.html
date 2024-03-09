@@ -50,12 +50,7 @@
 								<td th:text="${user.key.address}"></td>
 								<td th:text="${user.key.city}"></td>
 								<td>
-									<form th:action="@{/employee/orders}" method="GET">
-										<input th:if="${user.value == 0}" class="table" style="margin-right: 10px" type="submit" value="Wybierz uzytkownika">
-										<text style="float: left; padding-top: 15px; padding-right: 52px;" th:if="${user.value > 0}">Ten uzytkownik ma kare.</text>
-										<input type="hidden" th:value="${user.key.userId}" th:name="userId">
-									</form>
-									
+
 									<form th:action="@{/employee/users/showuserinfo}" method="GET">
 										<input style="background-color: orange" class="table" type="submit" value="Pokaz informacje">
 										<input type="hidden" th:value="${user.key.userId}" name="userId">
