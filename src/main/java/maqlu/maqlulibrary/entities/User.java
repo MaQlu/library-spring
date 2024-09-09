@@ -1,11 +1,13 @@
 package maqlu.maqlulibrary.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "USERS")
+
 public class User {
 
     @Id
@@ -27,6 +29,7 @@ public class User {
     @OneToMany(mappedBy="reservedByUser")
     private List<Book> reservedBooks;
 
+    @JsonIgnore
     @OneToMany(mappedBy="theUser")
     private List<Book> books;
 

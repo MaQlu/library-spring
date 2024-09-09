@@ -5,12 +5,10 @@ import maqlu.maqlulibrary.security.CurrentUserFinder;
 import maqlu.maqlulibrary.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,36 +28,18 @@ public class AdminController {
         return "admin/admin-home.html";
     }
 
-    @GetMapping(value="/manageaccounts")
-    public String manageAuthorities(@RequestParam (required = false) String firstName,
-                                    @RequestParam (required = false) String lastName,
-                                    Model model) {
-        List<User> users = usService.userSearcher(firstName, lastName);
-
-        model.addAttribute("users", users);
-        model.addAttribute("firstName", firstName);
-        model.addAttribute("lastName", lastName);
-        return "admin/admin-manage-accounts.html";
+    @GetMapping(value = "/manageaccounts")
+    @ResponseBody
+    public ResponseEntity<List<User>> manageAuthorities() {
+        List<User> users = usService.findAll();
+        return ResponseEntity.ok(users);
     }
 
-    @GetMapping(value="/manageaccount")
-    public String manageAccount(@RequestParam Long userId,
-                                Model model) {
-
+    @GetMapping(value = "/manageaccount")
+    @ResponseBody
+    public User manageAccount(@RequestParam Long userId) {
         User user = usService.findById(userId);
-        model.addAttribute("user", user);
-        return "admin/admin-manage-account.html";
-    }
-
-    @PutMapping(value="/confirmaccountsettings")
-    public String confirmAccountChanges(@RequestParam boolean accStatus,
-                                        @RequestParam String role,
-                                        @RequestParam Long userId,
-                                        Model model) {
-        model.addAttribute("role", role);
-        model.addAttribute("accStatus", accStatus);
-        model.addAttribute("user", usService.findById(userId));
-        return "admin/admin-confirm-account-settings.html";
+        return user;
     }
 
     @PutMapping(value="/saveaccountsettings")
@@ -74,7 +54,8 @@ public class AdminController {
     }
 
     @GetMapping(value="/accountsettingssaved")
-    public String accountSettingsSaved() {
-        return "admin/admin-account-settings-saved.html";
+    @ResponseBody
+    public ResponseEntity<String> accountSettingsSaved() {
+        return ResponseEntity.ok("Konto zaktualizowane");
     }
 }

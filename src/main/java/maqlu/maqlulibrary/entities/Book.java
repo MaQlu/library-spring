@@ -1,6 +1,7 @@
 package maqlu.maqlulibrary.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -27,6 +28,7 @@ public class Book {
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             fetch = FetchType.LAZY)
+    @JsonIgnore
     private User theUser;
 
     public Book() {

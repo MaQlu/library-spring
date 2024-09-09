@@ -28,6 +28,7 @@ public class CurrentUserFinder {
 
     public User getCurrentUser(){
         User currentUser = usService.findById(getCurrentUserId());
+
         return currentUser;
     }
 }

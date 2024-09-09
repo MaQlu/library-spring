@@ -32,14 +32,21 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests()
-                .requestMatchers("/user/**").hasRole("USER")
-                .requestMatchers("/employee/**").hasRole("EMPLOYEE")
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/h2-console/**").hasRole("ADMIN") //admin access db
+
+                //default settings
+//              .requestMatchers("/user/**").hasRole("USER")
+//              .requestMatchers("/employee/**").hasRole("EMPLOYEE")
+//              .requestMatchers("/admin/**").hasRole("ADMIN")
+
+                //postman tests
+                .requestMatchers("/user/**").permitAll()
+                .requestMatchers("/employee/**").permitAll()
+                .requestMatchers("/admin/**").permitAll()
+
+                .requestMatchers("/h2-console/**").hasRole("ADMIN")
                 .requestMatchers("/login/**").permitAll()
                 .requestMatchers("/register/**").permitAll()
                 .requestMatchers("/logout/**").permitAll()
-                //.requestMatchers("/templates/**").permitAll()
                 .requestMatchers("/CSS/**").permitAll()
                 .requestMatchers("/Images/**").permitAll()
                 .requestMatchers("/**").authenticated().and().formLogin().loginPage("/login");

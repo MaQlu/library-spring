@@ -41,11 +41,22 @@ public class FillDB {
         User user3 = new User("user", pwEncoder.encode("test"), "user.user@gmail.com", "Uzyszkodnik", "User", "Niepodleglosi 9a", "Lublin", "789");
         user3.setRole("ROLE_USER");
 
+        User user4 = new User("user1", pwEncoder.encode("test1"), "user1.user@gmail.com", "Uzyszkodnik1", "User1", "Niepodleglosi 9a1", "Lublin1", "7891");
+        user3.setRole("ROLE_USER");
+
+        User user5 = new User("user2", pwEncoder.encode("test2"), "user2.user@gmail.com", "Uzyszkodnik2", "User2", "Niepodleglosi 9a2", "Lublin2", "7892");
+        user5.setRole("ROLE_USER");
+
+        User user6 = new User("user3", pwEncoder.encode("test3"), "user3.user@gmail.com", "Uzyszkodnik3", "User3", "Niepodleglosi 9a3", "Lublin3", "7893");
+        user6.setRole("ROLE_USER");
+
 
         usService.save(user1);
         usService.save(user2);
         usService.save(user3);
-
+        usService.save(user4);
+        usService.save(user5);
+        usService.save(user6);
 
                 Book book1 = new Book("The Pragmatic Programmer", "David Thomas, Andrew Hunt", 2006, 1);
                 Book book2 = new Book("Clean Code", "Robert C. Martin", 2020, 2);
