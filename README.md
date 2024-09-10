@@ -35,7 +35,8 @@ library management system
 	-/yourbooks/extend – przedluzenie wypożyczenia. Jako parametr trzeba id książki i ilość tygodni do przedłużenia [ja bym to na przycisk zrobił]. Zwraca „/yourbooks/bookextended”.
 	-/yourbooks/bookextended – zwraca string „Wypozyczenie przedluzone”.
 	-/yourreservations – moje rezerwacje
-
+# Not Registered User 
+    -/notregistered/browsebooks - zwraca wszystkie książki w bazie danych, nie trzeba być zalogowanym ani zarejestrowanym [ukryc niektóre dane?]
 
 
 

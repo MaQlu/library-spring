@@ -43,6 +43,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/employee/**").permitAll()
                 .requestMatchers("/admin/**").permitAll()
 
+                .requestMatchers("/notregistered/**").permitAll()
                 .requestMatchers("/h2-console/**").hasRole("ADMIN")
                 .requestMatchers("/login/**").permitAll()
                 .requestMatchers("/register/**").permitAll()
