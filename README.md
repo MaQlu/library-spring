@@ -1,6 +1,7 @@
 ## library-spring
 
 library management system 
+# ! ITS CONFIGURED TO WORK ON PORT '8001' !
 
 # Admin :
 	-/admin-home.html -home page dla admina
